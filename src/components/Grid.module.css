@@ -1,0 +1,45 @@
+.container {
+    height: 660px;
+    display: grid;
+    grid-template-columns: repeat(30, 20px);
+    grid-template-rows: repeat(30, 20px);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.buttonControls{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px;
+}
+
+.buttonControls button {
+    margin: 5px;
+}
+
+.gridCell {
+    width: 20px;
+    height: 20px;
+}
+
+@media (prefers-color-scheme: light) {
+    .gridCell {
+      border: 1px solid#e2e2e2;
+      background-color: #ffffff;
+    }
+
+    .gridCellActive {
+      background-color: black;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .gridCell {
+      border: 1px solid white;
+      background-color: #474747;
+    }
+
+    .gridCellActive {
+      background-color: #ffff00;
+    }
+}

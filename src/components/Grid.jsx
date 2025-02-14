@@ -1,9 +1,13 @@
 import { useCallback, useState , useRef} from "react";
 import classes from './Grid.module.css';
 import { produce } from "immer";
+import { IoClose } from "react-icons/io5";
+import { IoIosPause } from "react-icons/io";
+import { IoIosPlay } from "react-icons/io";
+import { BsUiChecksGrid } from "react-icons/bs";
 
-const numRows = 30;
-const numCols = 30;
+let numRows = 30;
+let numCols = 30;
 
 const neighbours = [
     [-1, -1],
@@ -32,6 +36,7 @@ export default function Grid(){
         return generateEmptyGrid();
     });
 
+ 
     const [running, setRunning] = useState(false);
     const runningRef = useRef(running);
     runningRef.current = running;
@@ -65,8 +70,7 @@ export default function Grid(){
         })
         setTimeout(gameOfLife, 150);
     },[])
-   
-      
+
     
 
     function clearGrid() {
@@ -97,7 +101,7 @@ export default function Grid(){
                     }
                     setGrid(rows);
                 }}
-                >Random Pattern</button>
+                >Random Pattern <BsUiChecksGrid /></button>
                 <button 
                     onClick={() => {
                         setRunning(!running);
@@ -107,11 +111,11 @@ export default function Grid(){
                         }
                     }}
                 >
-                    {running ? 'Stop' : 'Start'}
+                    {running ? <>Stop <IoIosPause /> </> : <>Start <IoIosPlay /></>}
                 </button>
                 <button
                     onClick={clearGrid}
-                >Clear</button>
+                >Clear <IoClose /></button>
             </div>
             <div className={classes.container}>
                 {grid.map((rows,i) => {
@@ -128,10 +132,11 @@ export default function Grid(){
                                         });
                                         setGrid(newGrid);
                                     }}
-                                    style={{
-                                        width: 20,
-                                        height: 20,
-                                    }} />
+                                    // style={{
+                                    //     width: 20,
+                                    //     height: 20,
+                                    // }} 
+                                    />
                             ))
 
                             }
